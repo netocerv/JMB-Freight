@@ -1,0 +1,158 @@
+/* ========================================
+   FLOTA (FLEET)
+   ======================================== */
+.fleet {
+  padding: 5rem 0;
+  background: var(--color-white);
+}
+
+.fleet__subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  margin-bottom: 3rem;
+}
+
+.fleet__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  background: var(--color-gray);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-gray-border);
+}
+
+.fleet-stat {
+  text-align: center;
+}
+
+.fleet-stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.fleet-stat-label {
+  display: block;
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+.fleet__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.fleet-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--color-gray-border);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.fleet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary-light);
+}
+
+.fleet-card__icon {
+  margin-bottom: 1.2rem;
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.fleet-card h3 {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+}
+
+.fleet-card__specs {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.fleet-card__specs span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fleet-card__specs i {
+  color: var(--color-accent);
+}
+
+.fleet-card p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.fleet-card__badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.2rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #a5d6a7;
+}
+
+.fleet__cta {
+  text-align: center;
+  background: var(--color-gray);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-gray-border);
+}
+
+.fleet__cta p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   RESPONSIVE FLOTA
+   ======================================== */
+@media (max-width: 768px) {
+  .fleet__stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .fleet__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .fleet-card__specs {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fleet__grid {
+    grid-template-columns: 1fr;
+  }
+}
