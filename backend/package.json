@@ -1,0 +1,29 @@
+{
+  "name": "jmb-freight-backend",
+  "version": "1.0.0",
+  "description": "Backend para el sitio web de JMB Freight - Transporte y Logística",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "transporte",
+    "logistica",
+    "carga",
+    "freight",
+    "mexico"
+  ],
+  "author": "JMB Freight",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

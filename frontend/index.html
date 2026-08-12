@@ -1,108 +1,458 @@
-<!-- ===== SECCIÓN FLOTA ===== -->
-<section class="fleet" id="flota">
-  <div class="container">
-    <h2 class="section-title">Nuestra Flota</h2>
-    <p class="fleet__subtitle">
-      Unidades modernas y completamente equipadas para todo tipo de carga
-    </p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="JMB Freight - Transporte y Logística de Carga Especializada en México" />
+    <title>JMB Freight - Transporte y Logística</title>
 
-    <!-- Contador de unidades -->
-    <div class="fleet__stats">
-      <div class="fleet-stat">
-        <span class="fleet-stat-number">40+</span>
-        <span class="fleet-stat-label">Unidades disponibles</span>
-      </div>
-      <div class="fleet-stat">
-        <span class="fleet-stat-number">24/7</span>
-        <span class="fleet-stat-label">Disponibilidad</span>
-      </div>
-      <div class="fleet-stat">
-        <span class="fleet-stat-number">100%</span>
-        <span class="fleet-stat-label">Mantenimiento preventivo</span>
-      </div>
-    </div>
+    <!-- Font Awesome 6 (Biblioteca de íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- Grid de vehículos -->
-    <div class="fleet__grid">
+    <!-- Google Fonts (Tipografía moderna) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-      <!-- Vehículo 1: Nissan -->
-      <div class="fleet-card">
-        <div class="fleet-card__icon">
-          <i class="fas fa-truck fa-3x"></i>
-          <!-- 
-            INSTRUCCIÓN: Reemplaza el icono por:
-            <img src="ruta/nissan.jpg" alt="Camión Nissan" />
-          -->
-        </div>
-        <h3>Nissan</h3>
-        <div class="fleet-card__specs">
-          <span><i class="fas fa-gas-pump"></i> 3 1/2 toneladas</span>
-          <span><i class="fas fa-calendar-alt"></i> Modelo reciente</span>
-        </div>
-        <p>Unidades versátiles para carga ligera y media, ideales para distribución urbana y regional.</p>
-        <div class="fleet-card__badge">Disponible</div>
-      </div>
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 
-      <!-- Vehículo 2: Camión Torthon -->
-      <div class="fleet-card">
-        <div class="fleet-card__icon">
-          <i class="fas fa-truck-moving fa-3x"></i>
-          <!-- 
-            INSTRUCCIÓN: Reemplaza el icono por:
-            <img src="ruta/torthon.jpg" alt="Camión Torthon" />
-          -->
-        </div>
-        <h3>Torthon</h3>
-        <div class="fleet-card__specs">
-          <span><i class="fas fa-weight-hanging"></i> 3 1/2 toneladas</span>
-          <span><i class="fas fa-tachometer-alt"></i> Alto rendimiento</span>
-        </div>
-        <p>Camiones robustos con excelente capacidad de carga, perfectos para rutas de media y larga distancia.</p>
-        <div class="fleet-card__badge">Disponible</div>
-      </div>
+    <!-- ========== HEADER / NAVEGACIÓN ========== -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <!-- LOGO: Reemplaza src con tu logotipo -->
+            <a href="#" class="header__logo">
+                <img src="assets/images/logo-jmb-freight.png" alt="JMB Freight - Logo" />
+                <!-- 
+                    INSTRUCCIÓN: Coloca tu logotipo en: assets/images/logo-jmb-freight.png
+                    El diseño está preparado para un logo horizontal.
+                -->
+            </a>
 
-      <!-- Vehículo 3: Tráiler Caja de 53' -->
-      <div class="fleet-card">
-        <div class="fleet-card__icon">
-          <i class="fas fa-trailer fa-3x"></i>
-          <!-- 
-            INSTRUCCIÓN: Reemplaza el icono por:
-            <img src="ruta/trailer-caja-53.jpg" alt="Tráiler Caja 53'" />
-          -->
-        </div>
-        <h3>Tráiler Caja de 53'</h3>
-        <div class="fleet-card__specs">
-          <span><i class="fas fa-ruler-combined"></i> 53 pies</span>
-          <span><i class="fas fa-box"></i> Cerrado</span>
-        </div>
-        <p>Unidades con caja seca de 53 pies, ideales para carga general, electrónica y productos con alto valor.</p>
-        <div class="fleet-card__badge">Disponible</div>
-      </div>
+            <button class="header__hamburger" id="hamburger" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-      <!-- Vehículo 4: Tráiler Plana de 40' -->
-      <div class="fleet-card">
-        <div class="fleet-card__icon">
-          <i class="fas fa-truck-pickup fa-3x"></i>
-          <!-- 
-            INSTRUCCIÓN: Reemplaza el icono por:
-            <img src="ruta/trailer-plana-40.jpg" alt="Tráiler Plana 40'" />
-          -->
+            <nav class="header__nav" id="nav">
+                <ul class="header__menu">
+                    <li><a href="#inicio" class="header__link active">Inicio</a></li>
+                    <li><a href="#nosotros" class="header__link">Nosotros</a></li>
+                    <li><a href="#servicios" class="header__link">Servicios</a></li>
+                    <li><a href="#flota" class="header__link">Flota</a></li>
+                    <li><a href="#contacto" class="header__link">Contacto</a></li>
+                </ul>
+                <div class="header__actions">
+                    <a href="tel:+521234567890" class="header__phone">
+                        <i class="fas fa-phone"></i>
+                        <span>+52 (123) 456-7890</span>
+                    </a>
+                    <a href="#contacto" class="btn btn--primary btn--small">Cotizar</a>
+                </div>
+            </nav>
         </div>
-        <h3>Tráiler Plana de 40'</h3>
-        <div class="fleet-card__specs">
-          <span><i class="fas fa-ruler-combined"></i> 40 pies</span>
-          <span><i class="fas fa-arrows-alt-h"></i> Plataforma abierta</span>
+    </header>
+
+    <!-- ========== HERO (INICIO) ========== -->
+    <section class="hero" id="inicio">
+        <div class="hero__overlay"></div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <span class="hero__badge">Transporte Especializado</span>
+                <h1 class="hero__title">
+                    <span class="hero__title-highlight">JMB Freight</span><br />
+                    Soluciones Logísticas <br />de Clase Mundial
+                </h1>
+                <p class="hero__description">
+                    Movemos tu carga con eficiencia, seguridad y puntualidad. 
+                    Más de 40 unidades modernas para todo tipo de transporte.
+                </p>
+                <div class="hero__buttons">
+                    <a href="#contacto" class="btn btn--primary btn--large">
+                        Solicita Cotización <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#flota" class="btn btn--outline btn--large">
+                        Ver Flota <i class="fas fa-truck"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="40">0</span>
+                    <span class="hero__stat-label">Unidades</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="24">0</span>
+                    <span class="hero__stat-label">Años de Experiencia</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="500">0</span>
+                    <span class="hero__stat-label">Clientes Satisfechos</span>
+                </div>
+            </div>
         </div>
-        <p>Unidades con plataforma plana de 40 pies, especializadas para carga sobredimensionada y maquinaria.</p>
-        <div class="fleet-card__badge">Disponible</div>
-      </div>
+        <div class="hero__scroll-indicator">
+            <span>Desplázate</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    </div>
+    <!-- ========== NOSOTROS ========== -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content">
+                    <span class="section-tag">Quiénes Somos</span>
+                    <h2 class="section-title">Experiencia y Confianza <br />en Cada Kilómetro</h2>
+                    <p class="about__description">
+                        JMB Freight es una empresa mexicana con <strong>más de 24 años de experiencia</strong> en el sector 
+                        de transporte y logística. Nos especializamos en brindar soluciones integrales de carga, 
+                        asegurando que tu mercancía llegue a tiempo y en perfectas condiciones.
+                    </p>
+                    <div class="about__features">
+                        <div class="about__feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Seguridad Garantizada</h4>
+                                <p>Pólizas de seguro y monitoreo 24/7</p>
+                            </div>
+                        </div>
+                        <div class="about__feature">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Puntualidad</h4>
+                                <p>Entregas en tiempo y forma</p>
+                            </div>
+                        </div>
+                        <div class="about__feature">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <h4>Atención Personalizada</h4>
+                                <p>Asesoría en cada paso del proceso</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__image">
+                    <!-- 
+                        INSTRUCCIÓN: Reemplaza con tu imagen de equipo/operaciones
+                        Puedes usar: assets/images/about-team.jpg
+                    -->
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Operaciones de transporte JMB Freight" 
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Llamada a la acción -->
-    <div class="fleet__cta">
-      <p>¿Necesitas un tipo de unidad específico?</p>
-      <a href="#contacto" class="btn btn--primary btn--large">Solicita tu cotización</a>
-    </div>
-  </div>
-</section>
+    <!-- ========== SERVICIOS ========== -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="services__header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones de Transporte<br />Adaptadas a tus Necesidades</h2>
+                <p class="services__subtitle">
+                    Ofrecemos una amplia gama de servicios logísticos para cubrir todos los requerimientos de tu cadena de suministro.
+                </p>
+            </div>
+
+            <div class="services__grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Transporte Local y Regional</h3>
+                    <p>Distribución eficiente en rutas locales y regionales con unidades versátiles de 3.5 toneladas.</p>
+                    <a href="#contacto" class="service-card__link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card service-card--featured">
+                    <div class="service-card__icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Larga Distancia</h3>
+                    <p>Unidades especializadas para trayectos de media y larga distancia en todo el territorio nacional.</p>
+                    <a href="#contacto" class="service-card__link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Carga General y Especializada</h3>
+                    <p>Transporte de carga general, productos electrónicos, maquinaria y mercancía de alto valor.</p>
+                    <a href="#contacto" class="service-card__link">
+                        Más información <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FLOTA (de tu wireframe, mejorado) ========== -->
+    <section class="fleet" id="flota">
+        <div class="container">
+            <div class="fleet__header">
+                <span class="section-tag">Nuestra Flota</span>
+                <h2 class="section-title">Unidades Modernas y <br />Completamente Equipadas</h2>
+                <p class="fleet__subtitle">
+                    Cada vehículo cuenta con mantenimiento preventivo y las mejores condiciones para tu carga.
+                </p>
+            </div>
+
+            <!-- Contador de unidades -->
+            <div class="fleet__stats">
+                <div class="fleet-stat">
+                    <span class="fleet-stat__number">40+</span>
+                    <span class="fleet-stat__label">Unidades disponibles</span>
+                </div>
+                <div class="fleet-stat">
+                    <span class="fleet-stat__number">24/7</span>
+                    <span class="fleet-stat__label">Disponibilidad</span>
+                </div>
+                <div class="fleet-stat">
+                    <span class="fleet-stat__number">100%</span>
+                    <span class="fleet-stat__label">Mantenimiento preventivo</span>
+                </div>
+            </div>
+
+            <!-- Grid de vehículos -->
+            <div class="fleet__grid">
+
+                <!-- Vehículo 1: Nissan -->
+                <div class="fleet-card">
+                    <div class="fleet-card__image">
+                        <!-- 
+                            INSTRUCCIÓN: Reemplaza con imagen real de camión Nissan
+                            assets/images/fleet/nissan.jpg
+                        -->
+                        <img src="https://images.unsplash.com/photo-1573934212219-3a253d8b250b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Camión Nissan 3.5 toneladas" 
+                             loading="lazy" />
+                    </div>
+                    <div class="fleet-card__content">
+                        <h3>Nissan</h3>
+                        <div class="fleet-card__specs">
+                            <span><i class="fas fa-weight-hanging"></i> 3.5 toneladas</span>
+                            <span><i class="fas fa-calendar-alt"></i> Modelo reciente</span>
+                        </div>
+                        <p>Unidades versátiles para carga ligera y media, ideales para distribución urbana y regional.</p>
+                        <div class="fleet-card__badge">Disponible</div>
+                    </div>
+                </div>
+
+                <!-- Vehículo 2: Torthon -->
+                <div class="fleet-card">
+                    <div class="fleet-card__image">
+                        <!-- 
+                            INSTRUCCIÓN: Reemplaza con imagen real de camión Torthon
+                            assets/images/fleet/torthon.jpg
+                        -->
+                        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Camión Torthon 3.5 toneladas" 
+                             loading="lazy" />
+                    </div>
+                    <div class="fleet-card__content">
+                        <h3>Torthon</h3>
+                        <div class="fleet-card__specs">
+                            <span><i class="fas fa-weight-hanging"></i> 3.5 toneladas</span>
+                            <span><i class="fas fa-tachometer-alt"></i> Alto rendimiento</span>
+                        </div>
+                        <p>Camiones robustos con excelente capacidad de carga, perfectos para rutas de media y larga distancia.</p>
+                        <div class="fleet-card__badge">Disponible</div>
+                    </div>
+                </div>
+
+                <!-- Vehículo 3: Tráiler Caja 53' -->
+                <div class="fleet-card">
+                    <div class="fleet-card__image">
+                        <!-- 
+                            INSTRUCCIÓN: Reemplaza con imagen real de tráiler caja 53'
+                            assets/images/fleet/trailer-caja-53.jpg
+                        -->
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Tráiler Caja 53 pies" 
+                             loading="lazy" />
+                    </div>
+                    <div class="fleet-card__content">
+                        <h3>Tráiler Caja de 53'</h3>
+                        <div class="fleet-card__specs">
+                            <span><i class="fas fa-ruler-combined"></i> 53 pies</span>
+                            <span><i class="fas fa-box"></i> Cerrado</span>
+                        </div>
+                        <p>Unidades con caja seca de 53 pies, ideales para carga general, electrónica y productos con alto valor.</p>
+                        <div class="fleet-card__badge">Disponible</div>
+                    </div>
+                </div>
+
+                <!-- Vehículo 4: Tráiler Plana 40' -->
+                <div class="fleet-card">
+                    <div class="fleet-card__image">
+                        <!-- 
+                            INSTRUCCIÓN: Reemplaza con imagen real de tráiler plana 40'
+                            assets/images/fleet/trailer-plana-40.jpg
+                        -->
+                        <img src="https://images.unsplash.com/photo-1573934212219-3a253d8b250b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Tráiler Plana 40 pies" 
+                             loading="lazy" />
+                    </div>
+                    <div class="fleet-card__content">
+                        <h3>Tráiler Plana de 40'</h3>
+                        <div class="fleet-card__specs">
+                            <span><i class="fas fa-ruler-combined"></i> 40 pies</span>
+                            <span><i class="fas fa-arrows-alt-h"></i> Plataforma abierta</span>
+                        </div>
+                        <p>Unidades con plataforma plana de 40 pies, especializadas para carga sobredimensionada y maquinaria.</p>
+                        <div class="fleet-card__badge">Disponible</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Llamada a la acción -->
+            <div class="fleet__cta">
+                <p>¿Necesitas un tipo de unidad específico?</p>
+                <a href="#contacto" class="btn btn--primary btn--large">Solicita tu cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact__grid">
+                <div class="contact__info">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">Hablemos de <br />Tu Próximo Envío</h2>
+                    <p class="contact__description">
+                        Estamos listos para atenderte. Contáctanos por cualquiera de nuestros canales y recibe atención personalizada.
+                    </p>
+
+                    <div class="contact__methods">
+                        <div class="contact__method">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <a href="tel:+521234567890">+52 (123) 456-7890</a>
+                            </div>
+                        </div>
+                        <div class="contact__method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Correo Electrónico</h4>
+                                <!-- mailto: configuración automática -->
+                                <a href="mailto:contacto@jmbfreight.mx">contacto@jmbfreight.mx</a>
+                            </div>
+                        </div>
+                        <div class="contact__method">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <!-- Enlace directo a WhatsApp -->
+                                <a href="https://wa.me/521234567890" target="_blank">+52 (123) 456-7890</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact__form-wrapper">
+                    <form class="contact__form" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required />
+                            <small class="form-error" id="nameError">Por favor ingresa tu nombre</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required />
+                            <small class="form-error" id="emailError">Ingresa un correo válido</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+52 123 456 7890" required />
+                            <small class="form-error" id="phoneError">Ingresa un número de teléfono válido</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tipo de Servicio</label>
+                            <select id="service" name="service">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="local">Transporte Local</option>
+                                <option value="regional">Transporte Regional</option>
+                                <option value="larga-distancia">Larga Distancia</option>
+                                <option value="carga-especializada">Carga Especializada</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu carga y requerimientos..." required></textarea>
+                            <small class="form-error" id="messageError">Por favor escribe un mensaje</small>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--large btn--full">
+                            Enviar Mensaje <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <div class="form-success" id="formSuccess">
+                            <i class="fas fa-check-circle"></i>
+                            <p>¡Mensaje enviado! Te contactaremos en breve.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <!-- Logo Footer -->
+                    <img src="assets/images/logo-jmb-freight-footer.png" alt="JMB Freight" />
+                    <p>Soluciones logísticas de clase mundial. Movemos tu negocio con eficiencia y confianza.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#flota">Flota</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+521234567890">+52 (123) 456-7890</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:contacto@jmbfreight.mx">contacto@jmbfreight.mx</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de México, México</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 JMB Freight. Todos los derechos reservados.</p>
+                <p>Diseño y desarrollo: <a href="#" target="_blank">Agencia Digital</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/main.js"></script>
+</body>
+</html>
