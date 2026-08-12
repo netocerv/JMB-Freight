@@ -2,7 +2,9 @@
    JMB FREIGHT - JAVASCRIPT PRINCIPAL
    ============================================ */
 
-// ----- HAMBURGER MENU -----
+// ============================================================
+// 1. HAMBURGER MENU
+// ============================================================
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('nav');
 
@@ -11,7 +13,6 @@ hamburger?.addEventListener('click', () => {
     nav.classList.toggle('open');
 });
 
-// Cerrar menú al hacer clic en un enlace
 document.querySelectorAll('.header__link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger?.classList.remove('active');
@@ -19,21 +20,22 @@ document.querySelectorAll('.header__link').forEach(link => {
     });
 });
 
-// ----- HEADER SCROLL EFFECT -----
+// ============================================================
+// 2. HEADER SCROLL EFFECT
+// ============================================================
 const header = document.getElementById('header');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) {
+    if (window.pageYOffset > 50) {
         header?.classList.add('scrolled');
     } else {
         header?.classList.remove('scrolled');
     }
-    lastScroll = currentScroll;
 });
 
-// ----- ANIMACIONES AL SCROLL (Intersection Observer) -----
+// ============================================================
+// 3. ANIMACIONES AL SCROLL
+// ============================================================
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -42,10 +44,7 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Añadir clase visible a elementos con fade-in
             entry.target.classList.add('visible');
-            
-            // Si es un contador, iniciar animación de conteo
             if (entry.target.classList.contains('hero__stat-number')) {
                 animateCounter(entry.target);
             }
@@ -53,17 +52,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observar elementos con fade-in
-document.querySelectorAll('.fade-in, .service-card, .fleet-card').forEach(el => {
+document.querySelectorAll('.fade-in, .service-card, .fleet-card, .vehicle-article').forEach(el => {
     observer.observe(el);
 });
 
-// Observar también las tarjetas de la flota que ya tienen .visible
-document.querySelectorAll('.fleet-card.visible').forEach(el => {
-    observer.observe(el);
-});
-
-// ----- ANIMACIÓN DE CONTADORES (Hero Stats) -----
+// ============================================================
+// 4. CONTADORES ANIMADOS
+// ============================================================
 function animateCounter(element) {
     if (element.dataset.animated) return;
     element.dataset.animated = 'true';
@@ -75,7 +70,7 @@ function animateCounter(element) {
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(eased * target);
         
         element.textContent = current + (target > 100 ? '+' : '');
@@ -90,7 +85,9 @@ function animateCounter(element) {
     requestAnimationFrame(updateCounter);
 }
 
-// ----- FORMULARIO DE CONTACTO -----
+// ============================================================
+// 5. FORMULARIO DE CONTACTO (FULLY FUNCTIONAL)
+// ============================================================
 const form = document.getElementById('contactForm');
 const successMessage = document.getElementById('formSuccess');
 
@@ -141,11 +138,11 @@ if (form) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         
-        // Enviar datos al backend
+        // Recolectar datos
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
         try {
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            
             // Intentar enviar al backend
             const response = await fetch('/api/contact', {
                 method: 'POST',
@@ -157,18 +154,19 @@ if (form) {
                 // Éxito
                 form.reset();
                 successMessage.classList.add('visible');
-                setTimeout(() => {
-                    successMessage.classList.remove('visible');
-                }, 6000);
+                successMessage.querySelector('p').textContent = '¡Mensaje enviado! Te contactaremos en breve.';
+                setTimeout(() => successMessage.classList.remove('visible'), 8000);
             } else {
-                // Error del servidor: usar fallback con mailto
+                // Error del servidor: usar fallback mailto
                 sendEmailFallback(data);
             }
         } catch (error) {
-            // Error de red: usar fallback con mailto
+            // Error de red: usar fallback mailto
+            console.warn('Backend no disponible, usando fallback mailto');
             sendEmailFallback(data);
         }
         
+        // Restaurar botón
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane"></i>';
     });
@@ -183,29 +181,36 @@ function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Fallback: mailto con datos del formulario
+// ============================================================
+// 6. FALLBACK: mailto con datos del formulario
+// ============================================================
 function sendEmailFallback(data) {
+    // 🔹 CORREO: Cambia por el correo de la empresa
+    const empresaEmail = 'contacto@jmbfreight.mx';
+    
     const subject = encodeURIComponent(`Cotización JMB Freight - ${data.name}`);
     const body = encodeURIComponent(
         `Nombre: ${data.name}\n` +
         `Correo: ${data.email}\n` +
         `Teléfono: ${data.phone}\n` +
-        `Servicio: ${data.service || 'No especificado'}\n` +
-        `Mensaje: ${data.message}`
+        `Servicio: ${data.service || 'No especificado'}\n\n` +
+        `Mensaje:\n${data.message}`
     );
     
-    // Usar el mailto configurado en el HTML
-    const mailtoLink = `mailto:contacto@jmbfreight.mx?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:${empresaEmail}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
     
-    successMessage.classList.add('visible');
-    successMessage.querySelector('p').textContent = '¡Mensaje enviado por correo! Te contactaremos pronto.';
-    setTimeout(() => {
-        successMessage.classList.remove('visible');
-    }, 6000);
+    const successMessage = document.getElementById('formSuccess');
+    if (successMessage) {
+        successMessage.classList.add('visible');
+        successMessage.querySelector('p').textContent = '📧 ¡Mensaje enviado por correo! Te contactaremos pronto.';
+        setTimeout(() => successMessage.classList.remove('visible'), 8000);
+    }
 }
 
-// ----- SCROLL SUAVE PARA ENLACES INTERNOS -----
+// ============================================================
+// 7. SCROLL SUAVE PARA ENLACES INTERNOS
+// ============================================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -225,7 +230,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ----- ACTUALIZAR ENLACE ACTIVO EN EL MENÚ AL SCROLL -----
+// ============================================================
+// 8. ENLACE ACTIVO EN EL MENÚ
+// ============================================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.header__link');
 
@@ -240,7 +247,8 @@ window.addEventListener('scroll', () => {
     
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        if (link.getAttribute('href') === `#${current}` || 
+            link.getAttribute('href') === `index.html#${current}`) {
             link.classList.add('active');
         }
     });
