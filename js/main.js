@@ -1,6 +1,5 @@
 /* ============================================
-   JMB FREIGHT - JAVASCRIPT PRINCIPAL v4.0
-   Incluye: Menú, Scroll, Animaciones, Formulario y Modal
+   JMB FREIGHT - JAVASCRIPT PRINCIPAL v6.0
    ============================================ */
 
 // ----- HAMBURGER MENU -----
@@ -12,7 +11,6 @@ hamburger?.addEventListener('click', () => {
     nav.classList.toggle('open');
 });
 
-// Cerrar menú al hacer clic en un enlace
 document.querySelectorAll('.header__link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger?.classList.remove('active');
@@ -32,7 +30,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ----- ANIMACIONES AL SCROLL (Intersection Observer) -----
+// ----- ANIMACIONES AL SCROLL -----
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -42,7 +40,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
             if (entry.target.classList.contains('hero__stat-number')) {
                 animateCounter(entry.target);
             }
@@ -50,8 +47,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observar elementos
-document.querySelectorAll('.fade-in, .service-card, .fleet-card').forEach(el => {
+// SE AÑADIÓ .hero__stat-number A LOS SELECTORES PARA QUE EL OBSERVADOR LOS DETECTE
+document.querySelectorAll('.fade-in, .service-card, .fleet-card, .hero__stat-number').forEach(el => {
     observer.observe(el);
 });
 
@@ -130,14 +127,16 @@ if (form) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         
+        let formDataObj = null;
+
         try {
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            formDataObj = Object.fromEntries(formData.entries());
             
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                body: JSON.stringify(formDataObj)
             });
             
             if (response.ok) {
@@ -147,10 +146,10 @@ if (form) {
                     successMessage.classList.remove('visible');
                 }, 6000);
             } else {
-                sendEmailFallback(data);
+                sendEmailFallback(formDataObj);
             }
         } catch (error) {
-            sendEmailFallback(data);
+            sendEmailFallback(formDataObj);
         }
         
         submitBtn.disabled = false;
@@ -229,7 +228,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// MODAL DE GALERÍA DE FLOTA
+// MODAL DE GALERÍA DE FLOTA (DINÁMICO)
 // ============================================
 const modal = document.getElementById('fleetModal');
 const modalOverlay = document.getElementById('modalOverlay');
@@ -238,43 +237,16 @@ const modalTitle = document.getElementById('modalTitle');
 const modalGallery = document.getElementById('modalGallery');
 const modalCta = document.getElementById('modalCta');
 
-// 📌 REEMPLAZA LAS RUTAS CON LAS FOTOS REALES DE TU FLOTA
-const fleetImages = {
-    'Nissan': [
-        'assets/images/fleet/nissan.jpg',
-        'assets/images/fleet/nissan-1.jpg',
-        'assets/images/fleet/nissan-2.jpg'
-    ],
-    'Torthon': [
-        'assets/images/fleet/torthon.jpg',
-        'assets/images/fleet/torthon-1.jpg',
-        'assets/images/fleet/torthon-2.jpg'
-    ],
-    'Tráiler Caja de 53\'': [
-        'assets/images/fleet/trailer-caja-53.jpg',
-        'assets/images/fleet/trailer-caja-1.jpg',
-        'assets/images/fleet/trailer-caja-2.jpg'
-    ],
-    'Tráiler Plana de 40\'': [
-        'assets/images/fleet/trailer-plana-40.jpg',
-        'assets/images/fleet/trailer-plana-1.jpg',
-        'assets/images/fleet/trailer-plana-2.jpg'
-    ]
-};
-
-// Abrir modal
-function openModal(vehicleName) {
+function openModal(vehicleName, imagesArray) {
     if (!modal) return;
     
     modalTitle.textContent = vehicleName;
     modalGallery.innerHTML = '';
     
-    const images = fleetImages[vehicleName] || [];
-    
-    if (images.length > 0) {
-        images.forEach(src => {
+    if (imagesArray && imagesArray.length > 0 && imagesArray[0] !== "") {
+        imagesArray.forEach(src => {
             const img = document.createElement('img');
-            img.src = src;
+            img.src = src.trim();
             img.alt = `${vehicleName} - Imagen`;
             img.loading = 'lazy';
             modalGallery.appendChild(img);
@@ -289,35 +261,30 @@ function openModal(vehicleName) {
     document.body.style.overflow = 'hidden';
 }
 
-// Cerrar modal
 function closeModal() {
     if (!modal) return;
     modal.classList.remove('open');
     document.body.style.overflow = '';
 }
 
-// Eventos de cierre
 modalClose?.addEventListener('click', closeModal);
 modalOverlay?.addEventListener('click', closeModal);
 
-// Cerrar con tecla ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal?.classList.contains('open')) {
         closeModal();
     }
 });
 
-// Conectar el modal con las tarjetas de la flota
+// Inyectar el evento click leyendo dinámicamente el data-gallery
 document.querySelectorAll('.fleet-card').forEach(card => {
     const title = card.querySelector('h3')?.textContent.trim();
+    const galleryData = card.getAttribute('data-gallery');
+    const images = galleryData ? galleryData.split(',') : [];
     
     const image = card.querySelector('.fleet-card__image');
-    image?.addEventListener('click', () => openModal(title));
+    image?.addEventListener('click', () => openModal(title, images));
     
     const heading = card.querySelector('h3');
-    heading?.addEventListener('click', () => openModal(title));
+    heading?.addEventListener('click', () => openModal(title, images));
 });
-
-// ============================================
-// FIN DEL CÓDIGO DEL MODAL
-// ============================================
