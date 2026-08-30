@@ -1,5 +1,6 @@
 /* ============================================
-   JMB FREIGHT - JAVASCRIPT PRINCIPAL
+   JMB FREIGHT - JAVASCRIPT PRINCIPAL v4.0
+   Incluye: Menú, Scroll, Animaciones, Formulario y Modal
    ============================================ */
 
 // ----- HAMBURGER MENU -----
@@ -21,7 +22,6 @@ document.querySelectorAll('.header__link').forEach(link => {
 
 // ----- HEADER SCROLL EFFECT -----
 const header = document.getElementById('header');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -30,7 +30,6 @@ window.addEventListener('scroll', () => {
     } else {
         header?.classList.remove('scrolled');
     }
-    lastScroll = currentScroll;
 });
 
 // ----- ANIMACIONES AL SCROLL (Intersection Observer) -----
@@ -42,10 +41,8 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Añadir clase visible a elementos con fade-in
             entry.target.classList.add('visible');
             
-            // Si es un contador, iniciar animación de conteo
             if (entry.target.classList.contains('hero__stat-number')) {
                 animateCounter(entry.target);
             }
@@ -53,17 +50,12 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observar elementos con fade-in
+// Observar elementos
 document.querySelectorAll('.fade-in, .service-card, .fleet-card').forEach(el => {
     observer.observe(el);
 });
 
-// Observar también las tarjetas de la flota que ya tienen .visible
-document.querySelectorAll('.fleet-card.visible').forEach(el => {
-    observer.observe(el);
-});
-
-// ----- ANIMACIÓN DE CONTADORES (Hero Stats) -----
+// ----- ANIMACIÓN DE CONTADORES -----
 function animateCounter(element) {
     if (element.dataset.animated) return;
     element.dataset.animated = 'true';
@@ -75,7 +67,7 @@ function animateCounter(element) {
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(eased * target);
         
         element.textContent = current + (target > 100 ? '+' : '');
@@ -98,11 +90,9 @@ if (form) {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Limpiar errores previos
         document.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
         document.querySelectorAll('.form-group input, .form-group textarea').forEach(el => el.classList.remove('error'));
         
-        // Validar campos
         let isValid = true;
         
         const name = document.getElementById('name');
@@ -136,17 +126,14 @@ if (form) {
         
         if (!isValid) return;
         
-        // Deshabilitar botón
         const submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         
-        // Enviar datos al backend
         try {
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
             
-            // Intentar enviar al backend
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -154,18 +141,15 @@ if (form) {
             });
             
             if (response.ok) {
-                // Éxito
                 form.reset();
                 successMessage.classList.add('visible');
                 setTimeout(() => {
                     successMessage.classList.remove('visible');
                 }, 6000);
             } else {
-                // Error del servidor: usar fallback con mailto
                 sendEmailFallback(data);
             }
         } catch (error) {
-            // Error de red: usar fallback con mailto
             sendEmailFallback(data);
         }
         
@@ -183,7 +167,6 @@ function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Fallback: mailto con datos del formulario
 function sendEmailFallback(data) {
     const subject = encodeURIComponent(`Cotización JMB Freight - ${data.name}`);
     const body = encodeURIComponent(
@@ -194,7 +177,6 @@ function sendEmailFallback(data) {
         `Mensaje: ${data.message}`
     );
     
-    // Usar el mailto configurado en el HTML
     const mailtoLink = `mailto:contacto@jmbfreight.mx?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
     
@@ -245,3 +227,97 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// ============================================
+// MODAL DE GALERÍA DE FLOTA
+// ============================================
+const modal = document.getElementById('fleetModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalTitle = document.getElementById('modalTitle');
+const modalGallery = document.getElementById('modalGallery');
+const modalCta = document.getElementById('modalCta');
+
+// 📌 REEMPLAZA LAS RUTAS CON LAS FOTOS REALES DE TU FLOTA
+const fleetImages = {
+    'Nissan': [
+        'assets/images/fleet/nissan.jpg',
+        'assets/images/fleet/nissan-1.jpg',
+        'assets/images/fleet/nissan-2.jpg'
+    ],
+    'Torthon': [
+        'assets/images/fleet/torthon.jpg',
+        'assets/images/fleet/torthon-1.jpg',
+        'assets/images/fleet/torthon-2.jpg'
+    ],
+    'Tráiler Caja de 53\'': [
+        'assets/images/fleet/trailer-caja-53.jpg',
+        'assets/images/fleet/trailer-caja-1.jpg',
+        'assets/images/fleet/trailer-caja-2.jpg'
+    ],
+    'Tráiler Plana de 40\'': [
+        'assets/images/fleet/trailer-plana-40.jpg',
+        'assets/images/fleet/trailer-plana-1.jpg',
+        'assets/images/fleet/trailer-plana-2.jpg'
+    ]
+};
+
+// Abrir modal
+function openModal(vehicleName) {
+    if (!modal) return;
+    
+    modalTitle.textContent = vehicleName;
+    modalGallery.innerHTML = '';
+    
+    const images = fleetImages[vehicleName] || [];
+    
+    if (images.length > 0) {
+        images.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `${vehicleName} - Imagen`;
+            img.loading = 'lazy';
+            modalGallery.appendChild(img);
+        });
+    } else {
+        modalGallery.innerHTML = '<p style="color: var(--color-gray);">No hay imágenes disponibles para este vehículo.</p>';
+    }
+    
+    modalCta.href = '#contacto';
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+// Cerrar modal
+function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Eventos de cierre
+modalClose?.addEventListener('click', closeModal);
+modalOverlay?.addEventListener('click', closeModal);
+
+// Cerrar con tecla ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+        closeModal();
+    }
+});
+
+// Conectar el modal con las tarjetas de la flota
+document.querySelectorAll('.fleet-card').forEach(card => {
+    const title = card.querySelector('h3')?.textContent.trim();
+    
+    const image = card.querySelector('.fleet-card__image');
+    image?.addEventListener('click', () => openModal(title));
+    
+    const heading = card.querySelector('h3');
+    heading?.addEventListener('click', () => openModal(title));
+});
+
+// ============================================
+// FIN DEL CÓDIGO DEL MODAL
+// ============================================
