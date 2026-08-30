@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="JMB Freight - Transporte y Logística de Carga Especializada en México" />
+    <meta name="description" content="JMB Freight - Transporte y Logística de Carga Especializada en México. Más de 16 años de experiencia moviendo tu negocio con eficiencia." />
+    <meta name="theme-color" content="#0A2540" />
     <title>JMB Freight - Transporte y Logística</title>
 
-    <!-- Font Awesome 6 (Biblioteca de íconos) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- Google Fonts (Tipografía moderna) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -22,22 +23,22 @@
     <!-- ========== HEADER / NAVEGACIÓN ========== -->
     <header class="header" id="header">
         <div class="container header__container">
-            <!-- LOGO: Reemplaza src con tu logotipo -->
-            <a href="#" class="header__logo">
-                <img src="assets/images/logo-jmb-freight.png" alt="JMB Freight - Logo" />
-                <!-- 
-                    INSTRUCCIÓN: Coloca tu logotipo en: assets/images/logo-jmb-freight.png
-                    El diseño está preparado para un logo horizontal.
-                -->
+            
+            <!-- LOGO TIPOGRÁFICO -->
+            <a href="#inicio" class="header__logo header__logo--text" aria-label="JMB Freight - Inicio">
+                <span class="logo-text">
+                    <span class="logo-text__jmb">JMB</span>
+                    <span class="logo-text__freight">FREIGHT</span>
+                </span>
             </a>
 
-            <button class="header__hamburger" id="hamburger" aria-label="Menú">
+            <button class="header__hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <nav class="header__nav" id="nav">
+            <nav class="header__nav" id="nav" aria-label="Navegación principal">
                 <ul class="header__menu">
                     <li><a href="#inicio" class="header__link active">Inicio</a></li>
                     <li><a href="#nosotros" class="header__link">Nosotros</a></li>
@@ -68,7 +69,7 @@
                 </h1>
                 <p class="hero__description">
                     Movemos tu carga con eficiencia, seguridad y puntualidad. 
-                    Más de 40 unidades modernas para todo tipo de transporte.
+                    Más de 13 unidades modernas para todo tipo de transporte.
                 </p>
                 <div class="hero__buttons">
                     <a href="#contacto" class="btn btn--primary btn--large">
@@ -81,15 +82,15 @@
             </div>
             <div class="hero__stats">
                 <div class="hero__stat">
-                    <span class="hero__stat-number" data-count="40">0</span>
+                    <span class="hero__stat-number" data-count="13">0</span>
                     <span class="hero__stat-label">Unidades</span>
                 </div>
                 <div class="hero__stat">
-                    <span class="hero__stat-number" data-count="24">0</span>
+                    <span class="hero__stat-number" data-count="16">0</span>
                     <span class="hero__stat-label">Años de Experiencia</span>
                 </div>
                 <div class="hero__stat">
-                    <span class="hero__stat-number" data-count="500">0</span>
+                    <span class="hero__stat-number" data-count="1000">0</span>
                     <span class="hero__stat-label">Clientes Satisfechos</span>
                 </div>
             </div>
@@ -108,7 +109,7 @@
                     <span class="section-tag">Quiénes Somos</span>
                     <h2 class="section-title">Experiencia y Confianza <br />en Cada Kilómetro</h2>
                     <p class="about__description">
-                        JMB Freight es una empresa mexicana con <strong>más de 24 años de experiencia</strong> en el sector 
+                        JMB Freight es una empresa mexicana con <strong>más de 16 años de experiencia</strong> en el sector 
                         de transporte y logística. Nos especializamos en brindar soluciones integrales de carga, 
                         asegurando que tu mercancía llegue a tiempo y en perfectas condiciones.
                     </p>
@@ -137,11 +138,7 @@
                     </div>
                 </div>
                 <div class="about__image">
-                    <!-- 
-                        INSTRUCCIÓN: Reemplaza con tu imagen de equipo/operaciones
-                        Puedes usar: assets/images/about-team.jpg
-                    -->
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="assets/images/almacen-2.jpg" 
                          alt="Operaciones de transporte JMB Freight" 
                          loading="lazy" />
                 </div>
@@ -161,19 +158,17 @@
             </div>
 
             <div class="services__grid">
-                <!-- Servicio 1 -->
                 <div class="service-card">
                     <div class="service-card__icon">
                         <i class="fas fa-truck"></i>
                     </div>
                     <h3>Transporte Local y Regional</h3>
-                    <p>Distribución eficiente en rutas locales y regionales con unidades versátiles de 3.5 toneladas.</p>
+                    <p>Distribución eficiente en rutas locales y regionales con unidades versátiles y adaptables.</p>
                     <a href="#contacto" class="service-card__link">
                         Más información <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
-                <!-- Servicio 2 -->
                 <div class="service-card service-card--featured">
                     <div class="service-card__icon">
                         <i class="fas fa-route"></i>
@@ -185,7 +180,6 @@
                     </a>
                 </div>
 
-                <!-- Servicio 3 -->
                 <div class="service-card">
                     <div class="service-card__icon">
                         <i class="fas fa-box"></i>
@@ -200,7 +194,7 @@
         </div>
     </section>
 
-    <!-- ========== FLOTA (de tu wireframe, mejorado) ========== -->
+    <!-- ========== FLOTA ========== -->
     <section class="fleet" id="flota">
         <div class="container">
             <div class="fleet__header">
@@ -211,15 +205,14 @@
                 </p>
             </div>
 
-            <!-- Contador de unidades -->
             <div class="fleet__stats">
                 <div class="fleet-stat">
-                    <span class="fleet-stat__number">40+</span>
+                    <span class="fleet-stat__number">13</span>
                     <span class="fleet-stat__label">Unidades disponibles</span>
                 </div>
                 <div class="fleet-stat">
-                    <span class="fleet-stat__number">24/7</span>
-                    <span class="fleet-stat__label">Disponibilidad</span>
+                    <span class="fleet-stat__number">16</span>
+                    <span class="fleet-stat__label">Años de experiencia</span>
                 </div>
                 <div class="fleet-stat">
                     <span class="fleet-stat__number">100%</span>
@@ -227,100 +220,113 @@
                 </div>
             </div>
 
-            <!-- Grid de vehículos -->
             <div class="fleet__grid">
-
-                <!-- Vehículo 1: Nissan -->
-                <div class="fleet-card">
+                <!-- Vehículo 1: Nissan NP300 -->
+                <div class="fleet-card" data-vehicle="Nissan NP300" data-gallery="assets/images/fleet/nissan_np300_01.jpeg,assets/images/fleet/nissan_np300_02.jpeg">
                     <div class="fleet-card__image">
-                        <!-- 
-                            INSTRUCCIÓN: Reemplaza con imagen real de camión Nissan
-                            assets/images/fleet/nissan.jpg
-                        -->
-                        <img src="https://images.unsplash.com/photo-1573934212219-3a253d8b250b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Camión Nissan 3.5 toneladas" 
+                        <img src="assets/images/fleet/nissan_np300_01.jpeg" 
+                             alt="Nissan NP300 Chasis Cabina" 
                              loading="lazy" />
+                        <div class="fleet-card__gallery-hint">
+                            <i class="fas fa-images"></i> Ver galería
+                        </div>
                     </div>
                     <div class="fleet-card__content">
-                        <h3>Nissan</h3>
+                        <h3>Nissan NP300</h3>
                         <div class="fleet-card__specs">
-                            <span><i class="fas fa-weight-hanging"></i> 3.5 toneladas</span>
-                            <span><i class="fas fa-calendar-alt"></i> Modelo reciente</span>
+                            <span><i class="fas fa-weight-hanging"></i> Carga ligera</span>
+                            <span><i class="fas fa-box"></i> Caja Seca</span>
                         </div>
-                        <p>Unidades versátiles para carga ligera y media, ideales para distribución urbana y regional.</p>
+                        <p>Unidades versátiles y ágiles para carga ligera, ideales para distribución urbana y entregas de última milla.</p>
                         <div class="fleet-card__badge">Disponible</div>
                     </div>
                 </div>
 
-                <!-- Vehículo 2: Torthon -->
-                <div class="fleet-card">
+                <!-- Vehículo 2: Chevrolet Silverado 3500 HD -->
+                <div class="fleet-card" data-vehicle="Chevrolet Silverado 3500 HD" data-gallery="assets/images/fleet/chevrolet_silverado_01.jpeg,assets/images/fleet/chevrolet_silverado_02.jpeg">
                     <div class="fleet-card__image">
-                        <!-- 
-                            INSTRUCCIÓN: Reemplaza con imagen real de camión Torthon
-                            assets/images/fleet/torthon.jpg
-                        -->
-                        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Camión Torthon 3.5 toneladas" 
+                        <img src="assets/images/fleet/chevrolet_silverado_01.jpeg" 
+                             alt="Chevrolet Silverado 3500 HD" 
                              loading="lazy" />
+                        <div class="fleet-card__gallery-hint">
+                            <i class="fas fa-images"></i> Ver galería
+                        </div>
                     </div>
                     <div class="fleet-card__content">
-                        <h3>Torthon</h3>
+                        <h3>Chevrolet Silverado 3500 HD</h3>
                         <div class="fleet-card__specs">
-                            <span><i class="fas fa-weight-hanging"></i> 3.5 toneladas</span>
+                            <span><i class="fas fa-weight-hanging"></i> Carga media</span>
                             <span><i class="fas fa-tachometer-alt"></i> Alto rendimiento</span>
                         </div>
-                        <p>Camiones robustos con excelente capacidad de carga, perfectos para rutas de media y larga distancia.</p>
+                        <p>Vehículo robusto y potente, perfecto para cargas de volumen medio y rutas regionales con eficiencia.</p>
                         <div class="fleet-card__badge">Disponible</div>
                     </div>
                 </div>
 
-                <!-- Vehículo 3: Tráiler Caja 53' -->
-                <div class="fleet-card">
+                <!-- Vehículo 3: Ford Super Duty -->
+                <div class="fleet-card" data-vehicle="Ford Super Duty" data-gallery="assets/images/fleet/ford_super_duty_01.jpeg,assets/images/fleet/ford_super_duty_02.jpeg">
                     <div class="fleet-card__image">
-                        <!-- 
-                            INSTRUCCIÓN: Reemplaza con imagen real de tráiler caja 53'
-                            assets/images/fleet/trailer-caja-53.jpg
-                        -->
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Tráiler Caja 53 pies" 
+                        <img src="assets/images/fleet/ford_super_duty_01.jpeg" 
+                             alt="Ford Super Duty Caja Seca" 
                              loading="lazy" />
+                        <div class="fleet-card__gallery-hint">
+                            <i class="fas fa-images"></i> Ver galería
+                        </div>
                     </div>
                     <div class="fleet-card__content">
-                        <h3>Tráiler Caja de 53'</h3>
+                        <h3>Ford Super Duty</h3>
                         <div class="fleet-card__specs">
-                            <span><i class="fas fa-ruler-combined"></i> 53 pies</span>
-                            <span><i class="fas fa-box"></i> Cerrado</span>
+                            <span><i class="fas fa-weight-hanging"></i> Carga media-pesada</span>
+                            <span><i class="fas fa-box"></i> Caja Seca amplia</span>
                         </div>
-                        <p>Unidades con caja seca de 53 pies, ideales para carga general, electrónica y productos con alto valor.</p>
+                        <p>Plataforma de alta resistencia con excelente capacidad volumétrica, asegurando protección total en cada viaje.</p>
                         <div class="fleet-card__badge">Disponible</div>
                     </div>
                 </div>
 
-                <!-- Vehículo 4: Tráiler Plana 40' -->
-                <div class="fleet-card">
+                <!-- Vehículo 4: Freightliner M2 106 -->
+                <div class="fleet-card" data-vehicle="Freightliner M2 106" data-gallery="assets/images/fleet/freightliner_m2_01.jpeg,assets/images/fleet/freightliner_m2_02.jpeg,assets/images/fleet/freightliner_m2_03.jpeg,assets/images/fleet/freightliner_m2_04.jpeg,assets/images/fleet/freightliner_m2_05.jpeg">
                     <div class="fleet-card__image">
-                        <!-- 
-                            INSTRUCCIÓN: Reemplaza con imagen real de tráiler plana 40'
-                            assets/images/fleet/trailer-plana-40.jpg
-                        -->
-                        <img src="https://images.unsplash.com/photo-1573934212219-3a253d8b250b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Tráiler Plana 40 pies" 
+                        <img src="assets/images/fleet/freightliner_m2_01.jpeg" 
+                             alt="Camión Rabón Freightliner M2 106" 
                              loading="lazy" />
+                        <div class="fleet-card__gallery-hint">
+                            <i class="fas fa-images"></i> Ver galería
+                        </div>
                     </div>
                     <div class="fleet-card__content">
-                        <h3>Tráiler Plana de 40'</h3>
+                        <h3>Freightliner M2 106</h3>
                         <div class="fleet-card__specs">
-                            <span><i class="fas fa-ruler-combined"></i> 40 pies</span>
-                            <span><i class="fas fa-arrows-alt-h"></i> Plataforma abierta</span>
+                            <span><i class="fas fa-truck-moving"></i> Camión Rabón</span>
+                            <span><i class="fas fa-box"></i> Caja Seca</span>
                         </div>
-                        <p>Unidades con plataforma plana de 40 pies, especializadas para carga sobredimensionada y maquinaria.</p>
+                        <p>Camiones de excelente capacidad y resistencia para el transporte seguro de carga general en mayores volúmenes.</p>
                         <div class="fleet-card__badge">Disponible</div>
                     </div>
                 </div>
 
+                <!-- Vehículo 5: International ProStar -->
+                <div class="fleet-card" data-vehicle="International ProStar" data-gallery="assets/images/fleet/international_prostar_01.jpeg,assets/images/fleet/international_prostar_02.jpeg,assets/images/fleet/international_prostar_03.jpeg,assets/images/fleet/international_prostar_04.jpeg,assets/images/fleet/international_prostar_05.jpeg">
+                    <div class="fleet-card__image">
+                        <img src="assets/images/fleet/international_prostar_01.jpeg" 
+                             alt="Tractocamión International ProStar" 
+                             loading="lazy" />
+                        <div class="fleet-card__gallery-hint">
+                            <i class="fas fa-images"></i> Ver galería
+                        </div>
+                    </div>
+                    <div class="fleet-card__content">
+                        <h3>International ProStar</h3>
+                        <div class="fleet-card__specs">
+                            <span><i class="fas fa-truck"></i> Tractocamión</span>
+                            <span><i class="fas fa-route"></i> Larga distancia</span>
+                        </div>
+                        <p>Tractocamiones de alto desempeño para el arrastre de remolques, ideales para rutas de larga distancia a nivel nacional.</p>
+                        <div class="fleet-card__badge">Disponible</div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Llamada a la acción -->
             <div class="fleet__cta">
                 <p>¿Necesitas un tipo de unidad específico?</p>
                 <a href="#contacto" class="btn btn--primary btn--large">Solicita tu cotización</a>
@@ -351,7 +357,6 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Correo Electrónico</h4>
-                                <!-- mailto: configuración automática -->
                                 <a href="mailto:contacto@jmbfreight.mx">contacto@jmbfreight.mx</a>
                             </div>
                         </div>
@@ -359,8 +364,7 @@
                             <i class="fab fa-whatsapp"></i>
                             <div>
                                 <h4>WhatsApp</h4>
-                                <!-- Enlace directo a WhatsApp -->
-                                <a href="https://wa.me/521234567890" target="_blank">+52 (123) 456-7890</a>
+                                <a href="https://wa.me/521234567890" target="_blank" rel="noopener noreferrer">+52 (123) 456-7890</a>
                             </div>
                         </div>
                     </div>
@@ -423,8 +427,10 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <!-- Logo Footer -->
-                    <img src="assets/images/logo-jmb-freight-footer.png" alt="JMB Freight" />
+                    <h2 class="logo-text logo-text--footer">
+                        <span class="logo-text__jmb">JMB</span>
+                        <span class="logo-text__freight">FREIGHT</span>
+                    </h2>
                     <p>Soluciones logísticas de clase mundial. Movemos tu negocio con eficiencia y confianza.</p>
                 </div>
                 <div class="footer__links">
@@ -447,13 +453,32 @@
             </div>
             <div class="footer__bottom">
                 <p>&copy; 2026 JMB Freight. Todos los derechos reservados.</p>
-                <p>Diseño y desarrollo: <a href="#" target="_blank">Agencia Digital</a></p>
+                <p>Diseño y desarrollo: <a href="#" target="_blank" rel="noopener noreferrer">Agencia Digital</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- ========== MODAL DE GALERÍA ========== -->
+    <div class="modal" id="fleetModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal__overlay" id="modalOverlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modalClose" aria-label="Cerrar galería">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal__header">
+                <h3 id="modalTitle">Nombre del Vehículo</h3>
+                <span class="modal__badge">Galería de Fotos</span>
+            </div>
+            <div class="modal__gallery" id="modalGallery">
+                <!-- Las imágenes se insertarán aquí dinámicamente con JS leyendo el data-gallery -->
+            </div>
+            <div class="modal__footer">
+                <a href="#contacto" class="btn btn--primary" id="modalCta">Cotizar este vehículo</a>
+            </div>
+        </div>
+    </div>
 
     <!-- ========== SCRIPTS ========== -->
     <script src="js/main.js"></script>
 </body>
 </html>
-
