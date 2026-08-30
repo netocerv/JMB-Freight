@@ -1,28 +1,28 @@
 /* ============================================
-   JMB FREIGHT - ESTILOS PRINCIPALES v4.0
-   Incluye: Modo Oscuro/Claro y Modal
+   JMB FREIGHT - ESTILOS PRINCIPALES v10.0 (MAESTRO)
    ============================================ */
 
 /* ----- VARIABLES DE COLOR (MODO CLARO) ----- */
 :root {
-    --color-primary: #06265F;
-    --color-primary-dark: #041A42;
-    --color-primary-light: #0A3D8A;
+    --color-primary: #0A2540; 
+    --color-primary-dark: #06172B;
+    --color-primary-light: #123A6B;
     
-    --color-secondary: #E8A838;
-    --color-secondary-dark: #C48A2A;
-    --color-secondary-light: #F5D48A;
+    --color-secondary: #D4AF37; 
+    --color-secondary-dark: #B8962E;
+    --color-secondary-light: #E8CF6A;
     
     --color-white: #FFFFFF;
     --color-light: #F8F9FA;
     --color-gray: #6C757D;
     --color-dark: #1A1A2E;
-    --color-black: #0D0D1A;
+    --color-black: #080C16;
     
     --color-success: #28A745;
     --color-error: #DC3545;
     
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-logo: 'Arial Black', 'Impact', sans-serif;
     
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -33,9 +33,9 @@
     --radius: 12px;
     --radius-lg: 20px;
     
-    --shadow-sm: 0 2px 8px rgba(6, 38, 95, 0.08);
-    --shadow-md: 0 8px 30px rgba(6, 38, 95, 0.12);
-    --shadow-lg: 0 20px 60px rgba(6, 38, 95, 0.15);
+    --shadow-sm: 0 2px 8px rgba(10, 37, 64, 0.08);
+    --shadow-md: 0 8px 30px rgba(10, 37, 64, 0.12);
+    --shadow-lg: 0 20px 60px rgba(10, 37, 64, 0.15);
     
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -43,10 +43,17 @@
 /* ----- VARIABLES DE COLOR (MODO OSCURO) ----- */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-white: #121212;
-        --color-light: #1E1E1E;
-        --color-dark: #F8F9FA;
-        --color-gray: #A0A0A0;
+        --color-primary: #FFFFFF; 
+        --color-primary-dark: #E2E8F0; 
+        --color-primary-light: #FFFFFF;
+        
+        --color-white: #0E1116; 
+        --color-light: #161B22; 
+        
+        --color-dark: #E2E8F0; 
+        --color-gray: #9BA4B5;
+        
+        --color-black: #FFFFFF;
         
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
         --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -106,7 +113,7 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--color-secondary);
-    background: rgba(232, 168, 56, 0.1);
+    background: rgba(212, 175, 55, 0.12);
     padding: 0.4rem 1rem;
     border-radius: 50px;
     margin-bottom: var(--spacing-sm);
@@ -125,7 +132,54 @@ ul {
     color: var(--color-secondary);
 }
 
-/* ----- BOTONES ----- */
+/* ============================================
+   LOGO TIPOGRÁFICO (Header)
+   ============================================ */
+.header__logo--text {
+    display: block;
+    text-decoration: none;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    gap: 8px;
+    line-height: 0.9;
+    font-family: var(--font-logo);
+    transition: var(--transition);
+    position: relative;
+}
+
+.logo-text__jmb {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+    color: var(--color-primary);
+    transform: skew(-8deg);
+    text-transform: uppercase;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.logo-text__freight {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    transform: skew(-8deg);
+    margin-top: 0;
+}
+
+.header__logo--text:hover .logo-text__jmb {
+    color: var(--color-secondary);
+    text-shadow: 2px 2px 0 var(--color-primary);
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -205,7 +259,7 @@ ul {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(6, 38, 95, 0.06);
+    border-bottom: 1px solid rgba(10, 37, 64, 0.06);
     transition: var(--transition);
 }
 
@@ -226,26 +280,6 @@ ul {
     justify-content: space-between;
     padding: 0.8rem var(--spacing-lg);
     min-height: 80px;
-}
-
-/* Lógica de logos claro/oscuro */
-.header__logo--dark {
-    display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-    .header__logo--light {
-        display: none;
-    }
-    
-    .header__logo--dark {
-        display: block;
-    }
-}
-
-.header__logo img {
-    height: 50px;
-    width: auto;
 }
 
 .header__nav {
@@ -309,7 +343,6 @@ ul {
     color: var(--color-secondary);
 }
 
-/* Hamburguesa */
 .header__hamburger {
     display: none;
     flex-direction: column;
@@ -349,7 +382,7 @@ ul {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(135deg, #0A2540 0%, #06172B 100%);
     overflow: hidden;
     padding-top: 80px;
 }
@@ -358,8 +391,8 @@ ul {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 80% 20%, rgba(232, 168, 56, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 20% 80%, rgba(232, 168, 56, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
     z-index: 1;
 }
 
@@ -376,7 +409,7 @@ ul {
 
 .hero__badge {
     display: inline-block;
-    background: rgba(232, 168, 56, 0.2);
+    background: rgba(212, 175, 55, 0.2);
     color: var(--color-secondary-light);
     font-size: 0.8rem;
     font-weight: 600;
@@ -470,12 +503,6 @@ ul {
     align-items: center;
 }
 
-.about__content {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
-}
-
 .about__description {
     font-size: 1.1rem;
     color: var(--color-gray);
@@ -525,9 +552,6 @@ ul {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transform: scale(0.95);
-    animation: scaleIn 0.8s ease forwards 0.3s;
 }
 
 .about__image img {
@@ -569,47 +593,17 @@ ul {
 
 .service-card {
     background: var(--color-white);
-    border: 1px solid rgba(6, 38, 95, 0.08);
+    border: 1px solid rgba(10, 37, 64, 0.08);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     text-align: center;
     transition: var(--transition);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.service-card.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-md);
     border-color: var(--color-secondary);
-}
-
-.service-card--featured {
-    border-color: var(--color-secondary);
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    color: var(--color-white);
-}
-
-.service-card--featured .service-card__icon {
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--color-secondary);
-}
-
-.service-card--featured h3 {
-    color: var(--color-white);
-}
-
-.service-card--featured p {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.service-card--featured .service-card__link {
-    color: var(--color-secondary);
 }
 
 .service-card__icon {
@@ -619,7 +613,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(6, 38, 95, 0.06);
+    background: rgba(10, 37, 64, 0.06);
     border-radius: 50%;
     font-size: 2rem;
     color: var(--color-primary);
@@ -656,6 +650,37 @@ ul {
 .service-card__link:hover {
     gap: 0.8rem;
     color: var(--color-secondary);
+}
+
+/* ============================================
+   FIX DE LA TARJETA DESTACADA (Larga Distancia)
+   ============================================ */
+.service-card--featured {
+    background: #0A2540 !important; 
+    border: 2px solid #D4AF37 !important;
+}
+
+.service-card--featured .service-card__icon {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #D4AF37 !important;
+}
+
+.service-card--featured h3 {
+    color: #FFFFFF !important;
+}
+
+.service-card--featured p {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.service-card--featured .service-card__link {
+    color: #D4AF37 !important;
+}
+
+.service-card--featured:hover {
+    background: #06172B !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
 }
 
 /* ============================================
@@ -715,14 +740,7 @@ ul {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    opacity: 0;
-    transform: translateY(30px);
     cursor: pointer;
-}
-
-.fleet-card.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .fleet-card:hover {
@@ -750,7 +768,7 @@ ul {
 .fleet-card__gallery-hint {
     position: absolute;
     inset: 0;
-    background: rgba(6, 38, 95, 0.7);
+    background: rgba(10, 37, 64, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -953,7 +971,7 @@ ul {
     font-family: var(--font-primary);
     font-size: 1rem;
     padding: 0.8rem 1rem;
-    border: 2px solid rgba(6, 38, 95, 0.1);
+    border: 2px solid rgba(10, 37, 64, 0.1);
     border-radius: var(--radius);
     transition: var(--transition);
     background: var(--color-white);
@@ -965,7 +983,7 @@ ul {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-secondary);
-    box-shadow: 0 0 0 4px rgba(232, 168, 56, 0.1);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
 }
 
 .form-group input.error,
@@ -1001,9 +1019,10 @@ ul {
    FOOTER
    ============================================ */
 .footer {
-    background: var(--color-primary);
-    color: rgba(255, 255, 255, 0.8);
+    background: #0A2540 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     padding: var(--spacing-xl) 0 var(--spacing-md);
+    border-top: 2px solid #D4AF37;
 }
 
 .footer__grid {
@@ -1011,24 +1030,28 @@ ul {
     grid-template-columns: 2fr 1fr 1fr;
     gap: var(--spacing-xl);
     padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     margin-bottom: var(--spacing-md);
 }
 
-.footer__brand img {
-    height: 50px;
-    margin-bottom: var(--spacing-sm);
-    filter: brightness(0) invert(1);
+.logo-text--footer .logo-text__jmb {
+    color: #FFFFFF !important;
+    text-shadow: none !important; 
+}
+
+.logo-text--footer .logo-text__freight {
+    color: #D4AF37 !important;
 }
 
 .footer__brand p {
     max-width: 300px;
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .footer__links h4,
 .footer__contact h4 {
-    color: var(--color-white);
+    color: #FFFFFF !important;
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: var(--spacing-md);
@@ -1043,21 +1066,23 @@ ul {
 .footer__links a,
 .footer__contact a {
     transition: var(--transition);
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .footer__links a:hover,
 .footer__contact a:hover {
-    color: var(--color-secondary);
+    color: #D4AF37 !important;
 }
 
 .footer__contact li {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .footer__contact i {
-    color: var(--color-secondary);
+    color: #D4AF37 !important;
     width: 20px;
 }
 
@@ -1065,7 +1090,7 @@ ul {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5) !important;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
 }
@@ -1190,6 +1215,36 @@ ul {
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   AJUSTES ESPECIALES MODO OSCURO
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .header {
+        background: rgba(14, 17, 22, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero__title,
+    .hero__description,
+    .hero__badge,
+    .btn--outline {
+        color: var(--color-white) !important; 
+    }
+    
+    .hero__title-highlight {
+        color: var(--color-secondary) !important;
+    }
+
+    .btn--outline {
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+    .btn--outline:hover {
+        color: #0A2540 !important;
+        background: #FFFFFF !important;
+        border-color: #FFFFFF !important;
+    }
 }
 
 /* ============================================
